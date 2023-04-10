@@ -5,6 +5,7 @@
 # pdm
 .pdm.toml
 pdm.lock
+.pdm-python
 
 # ---> Python
 # Byte-compiled / optimized / DLL files
@@ -154,3 +155,4 @@ Temporary Items
 # ignore results & data folders
 results/
 data/
+

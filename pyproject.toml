@@ -1,0 +1,16 @@
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[project]
+name = "rekki"
+version = "0.0.1"
+description = ""
+authors = [{ name = "Lanqing Huang", email = "lqhuang@outlook.com" }]
+dependencies = []
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "BSD-3-Clause" }
+
+[tool.pdm]
