@@ -1,66 +1,73 @@
-[build-system]
-requires = ["pdm-backend"]
-build-backend = "pdm.backend"
-
 [project]
-name = "rekki"
-version = "0.0.1"
+name = "rekki-monorepo"
+version = "0.0.0"
 description = ""
-authors = [{ name = "Lanqing Huang", email = "lqhuang@outlook.com" }]
-requires-python = ">=3.10"
 readme = "README.md"
-license = { text = "BSD-3-Clause" }
+authors = [{ name = "Lanqing Huang", email = "lqhuang@typef.io" }]
+requires-python = ">=3.13"
+license = { text = "Apache-2.0" }
+keywords = ['actor', 'service', 'http', 'grpc', 'asyncio']
 classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: Implementation :: CPython",
   "Framework :: AsyncIO",
   "Framework :: Trio",
-  "License :: OSI Approved :: BSD License",
+  "License :: OSI Approved :: Apache Software License",
   "Operating System :: POSIX",
   "Typing :: Typed",
 ]
-dependencies = []
+dependencies = [
+  'rekki-core',
+  'rekki-service',
+  'rekki-http',
 
-# [project.optional-dependencies]
+  # 'rekki-grpc'
+]
 
-## Build
-[tool.pdm]
-[tool.pdm.dev-dependencies]
-dev = [
-  "-e rekki-core @ file:///${PROJECT_ROOT}/rekki-core",
-  "-e rekki-service @ file:///${PROJECT_ROOT}/rekki-service",
+
+[project.urls]
+Repository = "https://github.com/rekki-dev/rekki"
+# Documentation = "https://rekki.readthedocs.io"
+Changelog = "https://github.com/rekki-dev/rekki/blob/main/CHANGELOG.md"
+Releases = "https://github.com/rekki-dev/rekki/releases"
+
+## Project Manager
+[tool.uv]
+package = false
+dev-dependencies = [
+  # linter
   "mypy",
   "typing-extensions",
   "black",
   "isort",
+  'ruff',
+  # test
   "pytest",
   "pytest-anyio",
+  # commit
   "pre-commit",
 ]
+python-preference = "managed"
+
+[tool.uv.sources]
+rekki-core = { workspace = true }
+rekki-service = { workspace = true }
+rekki-http = { workspace = true }
+rekki-testsuite = { workspace = true }
+
+[tool.uv.workspace]
+members = ["packages/*"]
 
 
 ## Formatter
 [tool.black]
 line-length = 88
-target-version = ['py310']
+target-version = ['py312']
 include = '\.pyi?$'
 
-
-[tool.isort]
-profile = "black"
-line_length = 88
-known_typing = ["typing", "collections.abc"]
-sections = [
-  "FUTURE",
-  "TYPING",
-  "STDLIB",
-  "THIRDPARTY",
-  "FIRSTPARTY",
-  "LOCALFOLDER",
-]
 
 ## Linter
 [tool.mypy]
@@ -119,9 +126,25 @@ line-length = 88
 # Pyflakes (F), pycodestyle (E, W), pydocstyle (D), pyupgrade (UP),
 # flake8-bandit (S), flake8-bugbear (B), flake8-comprehensions (C4), flake8-datetimez (DTZ), flake8-pytest-style (PT)
 # Pylint (PLC, PLE, PLR, PLW), Ruff-specific rules (RUF)
-select = ["F", "E", "W", "UP", "S", "B", "C4", "DTZ", "PT"]
-extend-select = ["PLC", "PLE", "PLR", "PLW", "RUF"]
+select = [
+  "F",
+  "E",
+  "W",
+  "D",
+  "UP",
+  "S",
+  "B",
+  "C4",
+  "DTZ",
+  "PT",
+  "PLC",
+  "PLE",
+  "PLR",
+  "PLW",
+  "RUF",
+]
 
+# extend-select = []
 ignore = [
   "E501",    # Line too long (95 > 88 characters)
   "S101",    # Use of `assert` detected
@@ -132,7 +155,7 @@ ignore = [
   "B027",    # Allow non-abstract empty methods in abstract base classes
 ]
 
-fix = false
+
 #  A list of check code prefixes to consider autofix-able.
 fixable = ["F", "E711", "UP", "B"]
 unfixable = [
@@ -149,6 +172,24 @@ ignore-init-module-imports = true
   "S101",
   "TID252",
 ] # Tests can use magic values, assertions, and relative imports
+
+[tool.ruff.lint.isort]
+required-imports = ["from __future__ import annotations"]
+section-order = [
+  "future",
+  "typing",
+  "standard-library",
+  "third-party",
+  "first-party",
+  "local-folder",
+  "testing",
+]
+
+[tool.ruff.lint.isort.sections]
+typing = ["typing", "collections.abc"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 
 ## Testing
 [tool.pytest.ini_options]

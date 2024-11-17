@@ -1,0 +1,11 @@
+[project]
+name = "rekki-http"
+version = "0.1.0"
+description = "Rekki HTTP"
+authors = [
+    { name = "lqhuang", email = "lqhuang@typef.io" },
+    { name = "rekki authors", email = "authors@rekki.org" },
+]
+
+[project.optional-dependencies]
+sec = ['python-multipart', 'secure']

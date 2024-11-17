@@ -1,8 +1,4 @@
-# pika
-
-rktor
-
-rktr Good
+# rekki
 
 Async actor model for Python
 
@@ -23,8 +19,6 @@ internal state.
 - tractor
 - ray
 
-
-
 Messages are sent to an Actor through one of the following methods.
 
     ! means “fire-and-forget”, e.g. send a message asynchronously and return immediately. Also known as tell.
@@ -32,3 +26,5 @@ Messages are sent to an Actor through one of the following methods.
 
 Message ordering is guaranteed on a per-sender basis.
 
+- https://blog.orsinium.dev/posts/py/logging/
+- https://mypy.readthedocs.io/en/stable/config_file.html
