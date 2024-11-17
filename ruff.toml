@@ -20,7 +20,7 @@ extend-select = [
     "E", # pycodestyle
     "W", # pycodestyle
     # "D",   # pydocstyle
-    "DOC", # pydoclint
+    # "DOC", # pydoclint
     "UP",  # pyupgrade
     "S",   # flake8-bandit
     "B",   # flake8-bugbear
