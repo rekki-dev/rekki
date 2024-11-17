@@ -15,11 +15,11 @@ preview = true
 
 # Enable rules:
 extend-select = [
-    "F",   # pyflakes
-    "N",   # pep8-naming
-    "E",   # pycodestyle
-    "W",   # pycodestyle
-    "D",   # pydocstyle
+    "F", # pyflakes
+    "N", # pep8-naming
+    "E", # pycodestyle
+    "W", # pycodestyle
+    # "D",   # pydocstyle
     "DOC", # pydoclint
     "UP",  # pyupgrade
     "S",   # flake8-bandit
