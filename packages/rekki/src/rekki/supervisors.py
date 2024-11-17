@@ -2,14 +2,12 @@ from __future__ import annotations
 
 from typing import Type
 
-# from rktr.actor.types.supervisor import SupervisorStrategy, SupervisorT
+from rekki._abc import AbstractSupervisor
 
-# from rktr.actor.errors import MaxRestartsExceeded
-
-__all__ = ("OneForAllSupervisor", "OneForOneSupervisor", "SupervisorStrategy")
+__all__ = ("OneForAllSupervisor", "OneForOneSupervisor")
 
 
-class BaseSupervisor(SupervisorT):
+class BaseSupervisor(AbstractSupervisor):
     def __init__(self, max_restarts, backoff) -> None: ...
 
     def on_exception(self, exc: Type[Exception]) -> SupervisorStrategy:

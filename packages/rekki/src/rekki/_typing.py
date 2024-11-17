@@ -5,7 +5,9 @@ from typing import Any, TypeVar
 
 from types import FrameType, TracebackType
 
-_T = TypeVar("_T")
+T = TypeVar("T")
+T_co = TypeVar("T_co", covariant=True)
+T_contra = TypeVar("T_contra", contravariant=True)
 
 ExcInfo = tuple[type[BaseException], BaseException, TracebackType]
 OptExcInfo = ExcInfo | tuple[None, None, None]
@@ -15,6 +17,6 @@ ProfileFunction = Callable[[FrameType, str, Any], object]
 # Objects suitable to be passed to sys.settrace, threading.settrace, and similar
 # TraceFunction = Callable[[FrameType, str, Any], "TraceFunction" | None]
 
-AsyncSend = Callable[[_T], Awaitable[None]]
+AsyncSend = Callable[[T], Awaitable[None]]
 AsyncThrow = Callable[[Exception], Awaitable[None]]
 AsyncClose = Callable[[], Awaitable[None]]

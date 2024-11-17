@@ -1,10 +1,13 @@
-"""Custom exceptions."""
+"""rekki exceptions."""
 
-__all__ = ["MaxRestartsExceeded"]
+from __future__ import annotations
+
+__all__ = ["MaxRestartsExceededError", "RekkiError"]
 
 
-class InternalException(Exception): ...
+class RekkiError(Exception):
+    """Base exception for rekki."""
 
 
-class MaxRestartsExceeded(InternalException):
+class MaxRestartsExceededError(RekkiError):
     """Supervisor found restarting service too frequently."""

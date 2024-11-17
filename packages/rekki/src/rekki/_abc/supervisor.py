@@ -1,18 +1,13 @@
 from __future__ import annotations
 
 from rekki.typing import SupervisorStrategy
-from typing import TYPE_CHECKING
 
-from abc import ABC
+from abc import ABCMeta
 
 __all__ = ("AbstractSupervisor",)
 
 
-if TYPE_CHECKING:
-    from .actor import ServiceT
-
-
-class AbstractSupervisor(ABC):
+class AbstractSupervisor(metaclass=ABCMeta):
     """Base type for all supervisor strategies."""
 
     strategy: SupervisorStrategy
@@ -21,4 +16,6 @@ class AbstractSupervisor(ABC):
     over: float
     raises: type[BaseException]
 
-    _service: ServiceT
+    def on_exception(self, exc: type[BaseException]) -> SupervisorStrategy:
+        """Return a strategy for handling the exception."""
+        raise NotImplementedError
