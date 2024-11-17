@@ -1,9 +1,8 @@
-from pika.types.actor import ActorT
+from __future__ import annotations
 
 
 class Arbiter(ActorT):
-    """
-    A special actor who knows all the other actors and always has
+    """A special actor who knows all the other actors and always has
     access to a top level nursery.
     The arbiter is by default the first actor spawned on each host
     and is responsible for keeping track of all other actors for

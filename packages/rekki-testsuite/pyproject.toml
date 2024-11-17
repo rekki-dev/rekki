@@ -1,8 +1,0 @@
-[project]
-name = "rekki-testkit"
-version = "0.1.0"
-description = "Rekki testkit"
-authors = [
-    { name = "lqhuang", email = "lqhuang@typef.io" },
-    { name = "rekki authors", email = "authors@rekki.org" },
-]

@@ -3,11 +3,11 @@ requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
 [project]
-name = "rekki-core"
-version = "0.0.1"
+name = "rekki"
+version = "0.0.1a"
 description = "Reactive programming model for Python"
 authors = [{ name = "Lanqing Huang", email = "lqhuang@typef.io" }]
-requires-python = ">=3.10"
-license = { text = "BSD-3-Clause" }
+requires-python = ">=3.13"
+license = { text = "Apache-2.0" }
 readme = "README.md"
-dependencies = ["rich", "anyio", "attrs"]
+dependencies = ["anyio"]

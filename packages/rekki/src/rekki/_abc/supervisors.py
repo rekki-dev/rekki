@@ -6,16 +6,11 @@ from typing import Type
 
 # from rktr.actor.errors import MaxRestartsExceeded
 
-__all__ = (
-    "SupervisorStrategy",
-    "OneForOneSupervisor",
-    "OneForAllSupervisor",
-)
+__all__ = ("OneForAllSupervisor", "OneForOneSupervisor", "SupervisorStrategy")
 
 
 class BaseSupervisor(SupervisorT):
-    def __init__(self, max_restarts, backoff) -> None:
-
+    def __init__(self, max_restarts, backoff) -> None: ...
 
     def on_exception(self, exc: Type[Exception]) -> SupervisorStrategy:
         return SupervisorStrategy.RESTART
@@ -41,11 +36,13 @@ class BaseSupervisor(SupervisorT):
             raise SystemExit(1)
 
 
-
 class OneForOneSupervisor(BaseSupervisor):
     """Supervisor simply restarts any crashed service."""
+
     ...
+
 
 class OneForAllSupervisor(BaseSupervisor):
     """Supervisor that restarts all services when a service crashes."""
+
     ...

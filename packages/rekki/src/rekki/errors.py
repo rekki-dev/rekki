@@ -3,8 +3,7 @@
 __all__ = ["MaxRestartsExceeded"]
 
 
-class InternalException(Exception):
-    ...
+class InternalException(Exception): ...
 
 
 class MaxRestartsExceeded(InternalException):
